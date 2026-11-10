@@ -192,7 +192,10 @@
 #ensdp-rai .rai-calcf label{display:block;font-size:.79rem;font-weight:700;color:var(--c1);margin-bottom:4px}
 #ensdp-rai .rai-calcf input,#ensdp-rai .rai-calcf select{width:100%;font-family:inherit;font-size:.95rem;padding:9px 10px;border:1px solid var(--bd);border-radius:8px;background:#fff;color:var(--tx)}
 #ensdp-rai .rai-calc table{margin:0;background:#fff}
-#ensdp-rai .rai-calc td:last-child{font-weight:700;white-space:nowrap;color:var(--c1)}
+#ensdp-rai .rai-calc td:last-child{font-weight:700;color:var(--c1)}
+/* Solo la fecha se mantiene en una linea; el parentesis que la explica
+   puede repartirse, que es lo que impedia que cupiera en el telefono. */
+#ensdp-rai .rai-fch{white-space:nowrap}
 #ensdp-rai .rai-calc tr.urg td:last-child{color:#a32118}
 #ensdp-rai .rai-fer{font-size:.79rem;color:var(--mut);margin-top:10px}
 
@@ -1164,11 +1167,13 @@
       for(i=0;i<filas.length;i++){
         p=filas[i];
         if(p[1]==='h'){
-          d=fmt(sumarHabiles(base,p[2]))+' <span class="rai-fer">('+p[2]+' d\u00edas h\u00e1biles'+
+          d='<span class="rai-fch">'+fmt(sumarHabiles(base,p[2]))+'</span>'+
+            ' <span class="rai-fer">('+p[2]+' d\u00edas h\u00e1biles'+
             (p[3]?'; '+p[3]:'')+')</span>';
         }else if(p[1]==='c'){
-          d=fmt(new Date(base.getFullYear(),base.getMonth(),base.getDate()+p[2]))+
-            ' <span class="rai-fer">('+p[3]+')</span>';
+          d='<span class="rai-fch">'+
+            fmt(new Date(base.getFullYear(),base.getMonth(),base.getDate()+p[2]))+
+            '</span> <span class="rai-fer">('+p[3]+')</span>';
         }else if(p[1]==='hr'){
           d='Dentro de la hora siguiente';
         }else{
@@ -1579,11 +1584,14 @@
 </script>
 
 <p class="pie-sitio">
-  Protocolo interactivo &mdash; versi&oacute;n 1.6.0 &middot; Contenido tomado del Manual de
+  Protocolo interactivo &mdash; versi&oacute;n 1.6.1 &middot; Contenido tomado del Manual de
   Convivencia 2026 de la instituci&oacute;n.<br>
   Herramienta de consulta: no sustituye el Manual, el debido proceso ni la decisi&oacute;n
-  del Comit&eacute; Escolar de Convivencia.
+  del Comit&eacute; Escolar de Convivencia.<br>Esta p&aacute;gina cuenta visitas de forma an&oacute;nima, sin cookies y sin guardar datos personales.
 </p>
+
+<script data-goatcounter="https://ruta-atencion-integral.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
